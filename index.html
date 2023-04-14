@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman's Game</title>
+    <link rel="stylesheet" href="hangman.css">
+</head>
+<body>
+    <div class="container">
+        <h1>HANGMAN'S GAME</h1>
+        <div class="hangman-container">
+            <svg id="hangman" width="200" height="250" viewBox="0 0 200 250">
+                <!-- Base -->
+                <line x1="20" y1="230" x2="180" y2="230" stroke="black" stroke-width="4" />
+                <!-- Vertical bar -->
+                <line x1="40" y1="230" x2="40" y2="30" stroke="black" stroke-width="4" />
+                <!-- Top bar -->
+                <line x1="40" y1="30" x2="120" y2="30" stroke="black" stroke-width="4" />
+                <!-- Rope -->
+                <line x1="120" y1="30" x2="120" y2="60" stroke="black" stroke-width="2" />
+                <!-- Head -->
+                <circle id="head" cx="120" cy="80" r="20" fill="none" stroke="black" stroke-width="2" visibility="hidden" />
+                <!-- Body -->
+                <line id="body" x1="120" y1="100" x2="120" y2="150" stroke="black" stroke-width="2" visibility="hidden" />
+                <!-- Left arm -->
+                <line id="leftArm" x1="120" y1="110" x2="90" y2="130" stroke="black" stroke-width="2" visibility="hidden" />
+                <!-- Right arm -->
+                <line id="rightArm" x1="120" y1="110" x2="150" y2="130" stroke="black" stroke-width="2" visibility="hidden" />
+                <!-- Left leg -->
+                <line id="leftLeg" x1="120" y1="150" x2="90" y2="180" stroke="black" stroke-width="2" visibility="hidden" />
+                <!-- Right leg -->
+                <line id="rightLeg" x1="120" y1="150" x2="150" y2="180" stroke="black" stroke-width="2" visibility="hidden" />
+            </svg>
+            <p id="word"></p>
+        </div>
+        <p id="guesses">Incorrect guesses: </p>
+        <p id="message"></p>
+        <button id="restart">Restart</button>
+    </div>
+    <script src="HangMan.js"></script>
+</body>
+</html>
