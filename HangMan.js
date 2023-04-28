@@ -19,6 +19,15 @@ function startGame() {
     updateHangman(attempts);
 }
 
+const letters = document.querySelectorAll('.letter');
+letters.forEach((letter) => {
+    letter.addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        const touchedLetter = event.target.innerText;
+        guessLetter(touchedLetter);
+    });
+});
+
 function updateHangman(attempts) {
     const hangmanParts = ['head', 'body', 'leftArm', 'rightArm', 'leftLeg', 'rightLeg'];
     hangmanParts.forEach((part, index) => {
