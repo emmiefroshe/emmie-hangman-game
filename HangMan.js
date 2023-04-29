@@ -10,6 +10,7 @@ const wordElement = document.getElementById('word');
 const guessesElement = document.getElementById('guesses');
 const messageElement = document.getElementById('message');
 const restartButton = document.getElementById('restart');
+const keyboardElement = document.getElementById('keyboard');
 
 function startGame() {
     selectedWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -22,6 +23,7 @@ function startGame() {
     messageElement.textContent = '';
 
     updateHangman(attempts);
+    createVirtualKeyboard();
 }
 
 function updateHangman(attempts) {
@@ -53,19 +55,23 @@ function guessLetter(letter) {
     }
 }
 
+function createVirtualKeyboard() {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    keyboardElement.innerHTML = '';
+
+    for (const letter of letters) {
+        const button = document.createElement('button');
+        button.textContent = letter;
+        button.addEventListener('click', () => guessLetter(letter.toLowerCase()));
+        keyboardElement.appendChild(button);
+    }
+}
+
 document.addEventListener('keydown', (event) => {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         const letter = event.key.toLowerCase();
         guessLetter(letter);
     }
-});
-
-document.querySelectorAll('.letter').forEach((letter) => {
-    letter.addEventListener('touchstart', (event) => {
-        event.preventDefault();
-        const touchedLetter = event.target.textContent.toLowerCase();
-        guessLetter(touchedLetter);
-    });
 });
 
 restartButton.addEventListener('click', startGame);
